@@ -1,1 +1,424 @@
 /* You can add global styles to this file, and also import other style files */
+@charset "UTF-8";
+
+@import url(//fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
+html, body, html * {
+  font-family: 'Roboto', sans-serif;
+}
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+	background: #eee;
+	width: 100%;
+}
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+  /* slider1*/
+  .wrapper{
+    width:100%;
+    position:relative;
+    margin-top: -20pt;
+  }
+  
+  .carousel{
+      width: 100%;
+      position: relative;
+      padding-top:118%;
+      overflow: hidden;
+  }
+  
+  .inner{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top:0;
+      left: 0;
+  }
+  
+  .slide{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top:0;
+      right:0;
+      left:0;
+      z-index: 1;
+      opacity: 0;
+  }
+  
+  .slide.active,
+  .slide.left,
+  .slide.right{
+      z-index: 2;
+      opacity: 1;
+  }
+  
+  .js-reset-left{left:auto}
+  
+  .slide.left{
+      left:-100%;
+      right:0;
+  }
+  
+  .slide.right{
+      right:-100%;
+      left: auto;
+  }
+  
+  .transition .slide.left{left:0%}
+  .transition .slide.right{right:0%}
+  
+  .transition .slide.shift-right{right: 100%;left:auto}
+  .transition .slide.shift-left{left: 100%;right:auto}
+  
+  .transition .slide{
+      transition-property: right, left, margin;
+  }
+  
+  .indicators{
+    width:100%;
+    position: absolute;
+    bottom:0;
+    z-index: 4;
+    padding:0;
+    text-align: center;
+  }
+  
+  .indicators li{
+      width: 8px;
+      height: 8px;
+      display: inline-block;
+      margin: 5px;
+      background: #fff;
+      list-style-type: none;
+      border-radius: 50%;
+    cursor:pointer;
+    transition:background 0.3s ease-out;
+  }
+  
+  .indicators li.active{background:#93278f}
+  
+  .indicators li:hover{background-color:#2b2b2b}
+  
+  .arrow{
+    width: 20px;
+    height: 20px;
+    position:absolute;
+    top:50%;
+    z-index:5;
+    border-top:3px solid #fff;
+    border-right:3px solid #fff;
+    cursor:pointer;
+    transition:border-color 0.3s ease-out;
+  }
+  
+  .arrow:hover{border-color:#93278f}
+  
+  .arrow-left{
+    left:20px;
+    transform:rotate(225deg);
+  }
+  
+  .arrow-right{
+    right:20px;
+    transform:rotate(45deg);
+  }
+  
+  .slide{
+      text-align:center;
+    padding-top:25%;
+    background-size:cover;
+  }
+  .slide:nth-child(1){
+      background-image:url(assets/images/header/b2bexpobanner.jpg);
+   }
+  
+  .slide:nth-child(2){
+      background-image:url(assets/images/header/b2bexpobanner.jpg);
+  }
+  
+  .slide:nth-child(3){
+      background-image:url(assets/images/header/b2bexpobanner.jpg);
+   }
+  
+  /* slider2*/
+  
+  .wrapper1{
+    width:100%;
+    position:relative;
+    margin-top: -20pt;
+  }
+  
+  .carousel1{
+    width: 100%;
+    position: relative;
+    padding-top:37%;
+    overflow: hidden;
+  }
+  
+  .inner1{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left: 0;
+  }
+  
+  .slide1{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    right:0;
+    left:0;
+    z-index: 1;
+    opacity: 0;
+  }
+  
+  .slide1.active1,
+  .slide1.left,
+  .slide1.right{
+    z-index: 2;
+    opacity: 1;
+  }
+  
+  .js-reset-left1{left:auto}
+  
+  .slide1.left{
+    left:-100%;
+    right:0;
+  }
+  
+  .slide1.right{
+    right:-100%;
+    left: auto;
+  }
+  
+  .transition1 .slide1.left{left:0%}
+  .transition1 .slide1.right{right:0%}
+  
+  .transition1 .slide1.shift1-right{right: 100%;left:auto}
+  .transition1 .slide1.shift1-left{left: 100%;right:auto}
+  
+  .transition1 .slide1{
+    transition-property: right, left, margin;
+  }
+  
+  .indicators1{
+    width:100%;
+    position: absolute;
+    bottom:0;
+    z-index: 4;
+    padding:0;
+    text-align: center;
+  }
+  
+  .indicators1 li{
+    width: 8px;
+    height: 8px;
+    display: inline-block;
+    margin: 5px;
+    background: #fff;
+    list-style-type: none;
+    border-radius: 50%;
+    cursor:pointer;
+    transition:background 0.3s ease-out;
+  }
+  
+  .indicators1 li.active1{background:#93278f}
+  
+  .indicators1 li:hover{background-color:#2b2b2b}
+  
+  .arrow1{
+    width: 20px;
+    height: 20px;
+    position:absolute;
+    top:50%;
+    z-index:5;
+    border-top:3px solid #fff;
+    border-right:3px solid #fff;
+    cursor:pointer;
+    transition:border-color 0.3s ease-out;
+  }
+  
+  .arrow1:hover{border-color:#93278f}
+  
+  .arrow-left1{
+    left:20px;
+    transform:rotate(225deg);
+  }
+  
+  .arrow-right1{
+    right:20px;
+    transform:rotate(45deg);
+  }
+  
+  .slide1{
+    text-align:center;
+    padding-top:30%;
+    background-size:cover;
+  }
+  .slide1:nth-child(1){
+    background-image:url(assets/images/header/slider-1-1650x550.jpg);
+   }
+  
+  .slide1:nth-child(2){
+    background-image:url(assets/images/header/slider-2-1650x550.JPG);
+  }
+  
+  .slide1:nth-child(3){
+    background-image:url(assets/images/header/slider-3-1650x550.jpg);
+   }
+
+   .slide1:nth-child(4){
+    background-image:url(assets/images/header/slider-4-1650x550.jpg);
+   }
+   .slide1:nth-child(5){
+    background-image:url(assets/images/header/slider-5-1650x550.jpg);
+   }
+   .slide1:nth-child(6){
+    background-image:url(assets/images/header/slider-6-1650x550.jpg);
+   }
+   .slide1:nth-child(7){
+    background-image:url(assets/images/header/slider-7-1650x550.jpg);
+   }
+   .slide1:nth-child(8){
+    background-image:url(assets/images/header/slider-8-1650x550.jpg);
+   }
+   
+   @media screen and (max-width:767px) {
+  
+       .carousel{
+      width: 100%;
+      position: relative;
+      padding-top:48%;
+      overflow: hidden;
+  }
+      .wrapper{
+    width:100%;
+    position:relative;
+    margin-top: -20pt;
+  }
+  .slide{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top:0;
+      right:0;
+      left:0;
+      z-index: 1;
+      opacity: 0;
+  }
+  
+  .arrow{
+      display: none;
+  }
+  .indicators li{
+      display: none;
+   }
+   .indicators1 li{
+      display: none;
+   }
+  
+  .slide:nth-child(1){
+      background-image:url(assets/images/header/b2bexpobanner-mobile.jpg);
+   }
+  
+  .slide:nth-child(2){
+      background-image:url(assets/images/header/b2bexpobanner-mobile.jpg);
+  }
+  
+  .slide:nth-child(3){
+      background-image:url(assets/images/header/b2bexpobanner-mobile.jpg);
+   }
+  }
+  
+  .header-categoryPC:hover .header-categoryPC-content {
+    display: flex;
+  }
+  .J-categoryPC-level1 a
+  {
+    color:#222 !important;
+    cursor: pointer !important;
+  }
+  .J-categoryPC-level1:hover
+  {
+    color:royalblue !important;
+  }
+  .J-categoryPC-level2 a:hover
+  {
+    color:royalblue !important;
+  }
+  .J-categoryPC-level2 a
+  {
+    color:#222 !important;
+    cursor: pointer !important;
+  }
+  
+  .header-categoryPC .header-categoryPC-content {
+    position: absolute;
+    box-sizing: border-box;
+    border-radius: 6px;
+    box-shadow: rgba(0,0,0,0.247) 0 2px 10px 0;
+    left: 0;
+    top: 40px;
+    background: #fff;
+    display: none;
+  }
+  
+  .header-categoryPC .categoryPC-col {
+    box-sizing: border-box;
+    width: 260px;
+    min-width: 260px;
+    display: none;
+    height: 370px;
+    overflow: auto;
+    border-left: 1px solid #dae0e5;
+    padding: 10px 0;
+    line-height: 2.5;
+  }
+  
+  .header-categoryPC .categoryPC-col:first-child {
+    border-left: 0;
+  }
+  
+  .header-categoryPC a {
+    display: block;
+    padding: 5px 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #555;
+  }
+  
+  .header-categoryPC .categoryPC-item {
+    position: relative;
+  }
+  
+  .header-categoryPC .categoryPC-item.hover {
+    background: #e6ecf2;
+  }
+  
+  .header-categoryPC .icon-right {
+    position: absolute;
+    font-size: 16px;
+    color: #888;
+    right: 10px;
+    top: 7px;
+  }
+  
+  .header-categoryPC .categoryPC-group {
+    display: none;
+  }
+  
