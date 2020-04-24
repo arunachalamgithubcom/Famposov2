@@ -26,7 +26,9 @@ export class RfqformComponent implements OnInit {
   public country=[];
   public states=[];
   public cities=[];
-  public phonecode=[];
+  public phonecode=[
+   {"phonecode":"Ac"},
+  ];
   public submitval='';
   public errorMsg;
   public rfqmodetype='';
@@ -52,7 +54,7 @@ export class RfqformComponent implements OnInit {
     this.localeService.use('custom locale');
     this.datePickerConfig = Object.assign({},
       {
-      
+        containerClass: 'theme-dark-blue',
         dateInputFormat: 'DD/MM/YYYY',
       });
     this.minDate = new Date();
@@ -218,16 +220,15 @@ export class RfqformComponent implements OnInit {
      
   }
   dimensionunit= [
-    {"unit": "Kg" }, 
+    {"unit": "Mm" }, 
     {"unit": "Cm" }, 
-    {"unit": "Ton"}
+    {"unit": "Inch"}
   ]
   weightunit= [
+    {"unit": "Gram" }, 
     {"unit": "Kg" }, 
-    {"unit": "Cm" }, 
     {"unit": "Ton"}
   ]
-   
   selectedcountry: string = '';
   selectedstates:string='';
   selectD1 (event: any) 
@@ -242,8 +243,9 @@ export class RfqformComponent implements OnInit {
     const val = selectD2.options[selectD2.selectedIndex].getAttribute('data-somedata');
     this.requestquoteform.patchValue({Dlunit:val});
   }
-  selectW1 (event: any) 
+  selectW1(event: any) 
   {
+  
     const selectWl = event.target;
     const val = selectWl.options[selectWl.selectedIndex].getAttribute('data-somedata');
     this.requestquoteform.patchValue({Wwunit:val});

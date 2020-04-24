@@ -122,7 +122,7 @@ export class MainComponent implements OnInit {
                 }
                 else
                 { 
-                  Swal.fire("Verify captcha");
+                  Swal.fire("kindly Verify the captcha");
                 }
                },error=>console.error('error',error));
                 
@@ -131,7 +131,7 @@ export class MainComponent implements OnInit {
             }
             else
             {
-              Swal.fire('Invalid customer_name or email ');
+             Swal.fire('Provide a valid Customer Name or Email ');
               
             }        
 
@@ -200,7 +200,7 @@ export class MainComponent implements OnInit {
     }
     else
     {
-      Swal.fire('Choose a given RFQ Type like \n Buy/Rent/Opensale/Requestquote')
+       Swal.fire('Choose a given RFQ Type like \n Buy/Rent/Opensale/Requestquote');
     }
     
   }

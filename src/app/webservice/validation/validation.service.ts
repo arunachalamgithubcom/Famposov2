@@ -67,7 +67,7 @@ static numberValidator(control: AbstractControl) {
     }
 }
 static urlValidator(control: AbstractControl) {
-  const URL_REGEXP = /^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$/;
+    const URL_REGEXP = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/gm;
  if(control.get('company_url').value!="")
  {
   if (control.get('company_url').value.match(URL_REGEXP)) {
