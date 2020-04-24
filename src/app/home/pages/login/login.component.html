@@ -1,0 +1,56 @@
+<div class="container">
+	<div class="card rfq-form">
+		<div class="card-header rfq-header">
+			<h4  style="text-align: center;">Log In</h4>
+		</div>
+		<div class="card-body">
+			<form [formGroup]="login">
+				<div class="form-group row">
+					<div class="col-lg-4">
+						<label  class="custom-select-label" for="memberid">Member ID<span style="color:red">*</span></label>
+					</div>
+					<div class="col-lg-6">
+						<input type="text"  [ngClass]="{'error':login.get('memberid').invalid && login.get('memberid').touched}"  formControlName="memberid" class="form-control my-select" placeholder="Member ID" />
+						<validation-messages [control]="login.controls.memberid"></validation-messages>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-lg-4">
+						<label  class="custom-select-label" for="password">Password<span style="color:rgba(255, 0, 0, 0.448)">*</span></label>
+					</div>
+					<div class="col-lg-6">
+						<input type="text"  [ngClass]="{'error':login.get('password').invalid && login.get('password').touched}"  formControlName="password" class="form-control my-select"   placeholder="Password"  />
+						<validation-messages [control]="login.controls.password"></validation-messages>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-lg-4">
+						<label  class="custom-select-label" for="re-captcha">Captcha<span style="color:rgba(255, 0, 0, 0.448)">*</span></label>
+					</div>
+					<div class="col-lg-6">
+						<re-captcha (resolved)="resolved($event)" required siteKey="6LethuEUAAAAAA-6GTP6QohQ-RjY8DpvcY8wcK9O"  formControlName="recaptchaReactive"></re-captcha>
+					</div>
+				</div>
+				<div class="form-group row">
+					<div class="col-lg-4">
+						<a>Join now</a>
+					</div>
+					<div class="col-lg-6">
+						<button class="btn my-select rfq-btn" (click)="log()">Login</button>
+						<a>Forget Password ?</a>
+					</div>
+				</div>
+				<hr>
+				<div class="form-group row">
+					<div class="col-lg-3">
+						<a>SignIn</a>
+					</div>
+					<div class="col-lg-6">
+						<button class="btn my-select rfq-btn" (click)="google()">Signin with google</button>
+						<button class="btn my-select rfq-btn" (click)="facebook()">Signin with facebook</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,36 @@
+.rfq-form .rfq-header
+{
+  background: #c6fff7; 
+  background: -webkit-linear-gradient(to right, #c6fff7, #e1c7f5);  
+  background: linear-gradient(to right, #c6fff7, #e1c7f5);
+}
+.my-select {
+    background-color: #eeeeee;
+    color: #5f6162;
+    border: 1px solid #2fb8ec;
+    border-radius: 20px;
+    padding: 6px 20px;
+    font-size: 11pt;
+    margin-top: -5pt;
+  }
+  .rfq-btn
+  {
+    background: #c6fff7; 
+  background: -webkit-linear-gradient(to right, #c6fff7, #e1c7f5);  
+  background: linear-gradient(to right, #c6fff7, #e1c7f5);
+  color: #000000;
+  font-weight: 500;
+  }
+  .phonecodecolor{
+    padding-left: 13px;
+    padding-top: 3px;
+    height: 106%;
+    width: 19%;
+    position: absolute;
+    z-index: 0;
+    background: #c6fff7; 
+    background: -webkit-linear-gradient(to right, #c6fff7, #e1c7f5);  
+    background: linear-gradient(to right, #c6fff7, #e1c7f5);
+    font-weight: 600;
+    border-radius: 50% / 100%;
+  }

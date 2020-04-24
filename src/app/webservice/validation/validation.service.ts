@@ -7,7 +7,6 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/Observable/throw';
 
-import { RequestquoteService } from '../webservice/requestquote.service';
 import {Injector} from '@angular/core';
 
 export let InjectorInstance: Injector;

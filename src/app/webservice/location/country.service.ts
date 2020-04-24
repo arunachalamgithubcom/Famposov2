@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 import { HttpClient, HttpErrorResponse } from '@angular/common/Http';
-import { Observable } from 'rxjs/observable';
+import { Observable } from 'rxjs';
 
 import { Countrymodel } from '../../model/location/country';
 import { Statesmodel } from '../../model/location/states';

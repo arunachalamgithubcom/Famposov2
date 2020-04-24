@@ -1,0 +1,304 @@
+
+	<div class="container">	
+	    <div class="card rfq-form"> 
+	
+				<div class="card-header rfq-header">
+					<h3>Tell us what are you looking for,We will match the right seller/service provider to you !</h3>
+				</div>
+				<div class="card-body">
+					<ngx-spinner
+					bdOpacity = 0.9
+					bdColor = "rgba(255,255,255,0.7)"
+					size = "medium"
+					color = "#342c2c"
+					type = "ball-atom"
+					[fullScreen] = "true"
+					>
+					   <p style="color: black" > Loading... </p>
+					</ngx-spinner>
+				    <form [formGroup]="requestquoteform" (ngSubmit)="onSubmit()">
+						<p class="rfq-header">Requirement detail to {{headval}}</p>
+						<div class="container" style="margin:auto">
+							<input type="text" formControlName="rfqtype" class="form-control" style="display:none" />		 
+							<div class="form-group row" *ngIf="show_referencebox">
+								<div class="col-lg-4">
+								<label class="custom-select-label" for="Reference_no">Reference_no</label>
+								</div>
+								<div class="col-lg-6">
+								   <input type="text"  formControlName="reference_no" class="form-control my-select" placeholder="Reference_no" [readonly]="isDisabled" />
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-lg-4">
+								   <label class="custom-select-label" for="product_name">Product / Service Name<span style="color:red">*</span></label>
+								</div>
+								<div class="col-lg-6">
+								  <input type="text"   [ngClass]="{'error':requestquoteform.get('product_name').invalid && requestquoteform.get('product_name').touched}"   formControlName="product_name" class="form-control my-select"    placeholder="Product / Service Name"   [readonly]="isDisabled" />
+								  <validation-messages [control]="requestquoteform.controls.product_name"></validation-messages>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-lg-4">
+									<label class="custom-select-label" for="product_details">Product Details<span style="color:red">*</span></label>
+								</div>
+								<div class="col-lg-6">
+									<input type="text"   [ngClass]="{'error':requestquoteform.get('product_details').invalid && requestquoteform.get('product_details').touched}"   [readonly]="isDisabled"  formControlName="product_details"   class="form-control my-select" placeholder="Product Details"  />
+									<validation-messages [control]="requestquoteform.controls.product_details"></validation-messages>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-lg-4">
+									<label class="custom-select-label">Dimension</label>
+								</div>
+								<div class="col-lg-6">
+									<div class="row">
+										<div class="col-lg-6 dimension">
+											
+											<input type="number"   [readonly]="DisDisabled" formControlName="dimension_length" class="form-control my-select"  placeholder="Min"/>
+											<select class="form-control unit my-select" formControlName="Dlunit"  (change)="selectD1($event)"  [attr.disabled]="DisDisabled?'':null">
+												<option value="null" [selected]=true>select</option>
+												<option  *ngFor="let dimensionunit of dimensionunit"  [value]="dimensionunit.unit"  [attr.data-somedata]="dimensionunit.unit">{{dimensionunit.unit}}</option>
+											</select>
+										</div>
+										<div class="col-lg-6 dimension">
+											<input type="number"   [readonly]="DisDisabled" formControlName="dimension_width" class="form-control my-select" placeholder="Max"/>
+										   
+											<select class="form-control unit my-select" formControlName="Dwunit"  (change)="selectD2($event)"  [attr.disabled]="DisDisabled?'':null">
+												<option value="null" [selected]=true>select</option>
+												<option  *ngFor="let dimensionunit of dimensionunit"  [value]="dimensionunit.unit" [attr.data-somedata]="dimensionunit.unit">{{dimensionunit.unit}}</option>
+											</select>
+										  
+										</div>
+										<div><validation-messages [control]="requestquoteform.controls.dimension_width"></validation-messages></div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-lg-4">
+									<label class="custom-select-label">Qty</label>
+								</div>
+								<div class="col-lg-6">
+									<div class="row">
+										<div class="col-lg-6">
+											<input type="number" [readonly]="DisDisabled" formControlName="quantity_min" class="form-control my-select" placeholder="Min"/>
+										</div>
+										<div class="col-lg-6">
+											<input type="number" [readonly]="DisDisabled" formControlName="quantity_max" class="form-control my-select" placeholder="Max"/>
+											<validation-messages [control]="requestquoteform.controls.quantity_max"></validation-messages>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-lg-4">
+									<label class="custom-select-label">Weight</label>
+								</div>
+								<div class="col-lg-6">
+									<div class="row">
+										<div class="col-lg-6 weight">
+											<input type="number" [readonly]="DisDisabled" formControlName="weight_min" class="form-control my-select" placeholder="Min" />
+											<select  class="form-control unit my-select" formControlName="Wlunit"  (change)="selectW1($event)" [attr.disabled]="DisDisabled?'':null">
+												<option value="null" [selected]=true>select</option>
+												<option  *ngFor="let weightunit of weightunit"  [value]="weightunit.unit" [attr.data-somedata]="weightunit.unit">{{weightunit.unit}}</option>
+											</select>
+										</div>
+										<div class="col-lg-6 weight">
+											<input type="number"   [readonly]="DisDisabled"  formControlName="weight_max" class="form-control my-select" placeholder="Max"/>
+										   
+											<select class="form-control unit my-select" formControlName="Wwunit my-select"  (change)="selectW2($event)" [attr.disabled]="DisDisabled?'':null">
+												<option value="null" [selected]=true>select</option>
+												<option  *ngFor="let weightunit of weightunit"  [value]="weightunit.unit" [attr.data-somedata]="weightunit.unit">{{weightunit.unit}}</option>
+											</select>
+										</div>
+										<div><validation-messages [control]="requestquoteform.controls.weight_max"></validation-messages></div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-lg-4">
+									<label class="custom-select-label">Buying currency</label>
+								</div>
+								<div class="col-lg-3">
+									<select class="form-control my-select" formControlName="buying_currency" [attr.disabled]="DisDisabled?'':null">
+										<option value="NULL" [selected]=true>Select currency</option>
+										<option [value]="country.id" *ngFor="let country of country">{{country.currency}}</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-lg-4">
+									<label class="custom-select-label">Preferred buying Price</label>
+								</div>
+								<div class="col-lg-6">
+									<div class="row">
+										<div class="col-lg-6">
+											<input type="number" [readonly]="DisDisabled" formControlName="buyprice_min" class="form-control my-select" placeholder="Min"/>
+										</div>
+										<div class="col-lg-6">
+											<input type="number" [readonly]="DisDisabled" formControlName="buyprice_max" class="form-control my-select" placeholder="Max"/>
+											<validation-messages [control]="requestquoteform.controls.buyprice_max"></validation-messages>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-lg-4">
+									<label class="custom-select-label">Delivery</label>
+								</div>
+								<div class="col-lg-6">
+									<div class="row">
+										<div class="col-lg-6 delivery">
+											<input type="radio" [disabled]="DisDisabled" formControlName="delivery" class="deliverycheckox" value="Self Collection"/>
+											<span class="deliverytitle">Self Collection</span>
+										</div>
+										<div class="col-lg-6 delivery">
+											<input type="radio" [disabled]="DisDisabled" formControlName="delivery" class="deliverycheckox" value="By Seller"/>
+											<span class="deliverytitle">by Seller</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-lg-4">
+									<label class="custom-select-label">Expected delivery date</label>
+								</div>
+								<div class="col-lg-6">
+									<div class="row">
+										<div class="col-lg-6">
+											<input type="text" [readonly]="DisDisabled"  formControlName="expected_delivery_date"  class="form-control my-select"  bsDatepicker  [minDate]="minDate"   [bsConfig]="datePickerConfig"/>From
+										
+										</div>
+										<div class="col-lg-6">
+											<input type="text" [readonly]="DisDisabled" formControlName="by_date"   class="form-control my-select"  bsDatepicker  [minDate]="minDate"  [bsConfig]="datePickerConfig"/> By
+											<validation-messages [control]="requestquoteform.controls.by_date"></validation-messages>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="form-group row">
+								<div class="col-lg-4">
+									<label class="custom-select-label">Delivery Location</label>
+								</div>
+								<div class="col-lg-6">
+									<div class="row">
+										<div class="col-lg-6 delivery_loc">
+											<input type="checkbox" [disabled]="DisDisabled"  formControlName="Other_location" class="delivery_loc_radio" style="margin-top: 18px;"  (change)="handleSelected($event)" [checked]="isEnabled"/>
+											<span class="delivery_loc_title">Same as contact</span>
+										</div>
+										<div class="col-lg-6" [hidden]="show_locationbox">
+											<input type="text" [readonly]="DisDisabled" formControlName="Other_location"  class="other_loc my-select"  placeholder="Other location" />
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<p class="rfq-header">Contact Details</p>
+						<div class="form-group row">
+							<div class="col-lg-4">
+								<label class="custom-select-label" for="service_name">Your Name<span style="color:red">*</span></label>
+							</div>
+							<div class="col-lg-6">
+								<input type="text"  [ngClass]="{'error':requestquoteform.get('customer_name').invalid && requestquoteform.get('customer_name').touched}"   [readonly]="DisDisabled" formControlName="customer_name" class="form-control my-select"  [readonly]="isDisabled" placeholder="Your name"/>
+								<validation-messages [control]="requestquoteform.controls.customer_name"></validation-messages>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-lg-4">
+								<label for="service_name">Email<span style="color:red">*</span></label>
+							</div>
+							<div class="col-lg-6">
+								<input type="text"  [ngClass]="{'error':requestquoteform.get('email').invalid && requestquoteform.get('email').touched}" [readonly]="DisDisabled" formControlName="email" class="form-control my-select"   [readonly]="isDisabled"placeholder="Email"/>
+								<validation-messages [control]="requestquoteform.controls.email"></validation-messages>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-lg-4">
+							<label class="custom-select-label" for="service_name">Company Name</label>
+							</div>
+							<div class="col-lg-6">
+								<input type="text"  [ngClass]="{'error':requestquoteform.get('company_name').invalid && requestquoteform.get('company_name').touched}" formControlName="company_name" class="form-control my-select"  [readonly]="DisDisabled" placeholder="Company name"/>
+								<validation-messages [control]="requestquoteform.controls.company_name"></validation-messages>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-lg-4">
+								<label class="custom-select-label">Country<span style="color:red">*</span></label>
+							</div>
+							<div class="col-lg-6">
+								<select  [ngClass]="{'error':requestquoteform.get('country').invalid && requestquoteform.get('country').touched}"  formControlName="country" class="form-control my-select"  (change)="selectChangeCountry($event)" [attr.disabled]="DisDisabled?'':null">
+									<option value=""   [selected]=true >Select country</option>
+									<option *ngFor="let country of country"  [value]="country.country"  id="countryselector" [attr.data-somedata]="country.id">{{country.country}}</option>
+								</select>
+								<validation-messages [control]="requestquoteform.controls.country"></validation-messages>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-lg-4">
+								<label class="custom-select-label">State</label>
+							</div>
+							<div class="col-lg-6">
+								<select formControlName="state" class="form-control my-select" (change)="selectChangeStates($event)"  [attr.disabled]="DisDisabled?'':null">
+									<option value="" [selected]=true>Select state</option>
+									<option   *ngFor="let states of states"  [value]="states.states"  [attr.data-somedata]="states.id">{{states.states}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-lg-4">
+								<label class="custom-select-label">City</label>
+							</div>
+							<div class="col-lg-6">
+								<select  formControlName="city" class="form-control my-select" [attr.disabled]="DisDisabled?'':null">
+									<option value="" [selected]=true>Select city</option>
+									<option  *ngFor="let cities of cities" [value]="cities.cities">{{cities.cities}}</option>
+								</select>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-lg-4">
+								<label class="custom-select-label">Postalcode</label>
+							</div>
+							<div class="col-lg-6">
+							<input type="text" [readonly]="DisDisabled" formControlName="postal_code" class="form-control my-select" placeholder="Postalcode"/>
+							</div>
+						</div>
+						<p><u>Contact Number*</u></p>
+						<div class="form-group row">
+							<div class="col-lg-4">
+							<label class="custom-select-label"  for="phone">Mobile no<span style="color:red">*</span></label>
+							</div>
+							<div class="col-lg-6">
+								<div>
+									<span  class="phonecodecolor"  *ngFor="let phonecode of phonecode">+{{phonecode.phonecode}}</span>
+									<input type="text" [readonly]="DisDisabled" formControlName="mobile_no" name="mobile_no" class="form-control my-select"  [ngClass]="{'error':requestquoteform.get('mobile_no').invalid && requestquoteform.get('mobile_no').touched}" placeholder="Mobile no"/>
+								</div>
+								<validation-messages [control]="requestquoteform.controls.mobile_no"></validation-messages>
+							</div>
+						</div>
+						<div class="form-group row" *ngFor="let phonecode of phonecode">
+							<div class="col-lg-4">
+							<label class="custom-select-label">Countrycode</label>
+							</div>
+							<div class="col-lg-6">
+								<input type="text" formControlName="countrycode" name="countrycode"   class="form-control my-select"  [(ngModel)]="phonecode.country_codes" [readonly]="DisDisabled" />
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-lg-4">
+							<label class="custom-select-label">Company Url</label>
+							</div>
+							<div class="col-lg-6">
+							  <input type="text" [readonly]="DisDisabled" formControlName="company_url" name="company_url" class="form-control my-select"  placeholder="Company Url"/>
+							  <validation-messages [control]="requestquoteform.controls.company_url"></validation-messages>
+							</div>
+						</div>
+						<div class="form-group">
+							<button class="btn my-select rfq-btn"  type="submit" >{{btval}}</button>
+						</div>
+				    </form>
+				</div>	  
+			
+		</div>
+	</div>
+
+

@@ -1,0 +1,126 @@
+<div class="container">			
+
+		    <div class="card rfq-form"> 
+				<div class="card-header rfq-header">
+					<h4><span>Join free!</span>FAMPOSO Provides Global platform for all your Buying, Renting, Request for Quote, Sale & Networking in 4 steps</h4>
+				</div>
+				<div class="card-body">
+					<ngx-spinner
+					bdOpacity = 0.9
+					bdColor = "rgba(255,255,255,0.7)"
+					size = "medium"
+					color = "#342c2c"
+					type = "ball-atom"
+					[fullScreen] = "true"
+					>
+						<p style="color: black" > Loading... </p>
+					</ngx-spinner>
+					<form [formGroup]="joinfree" >
+						<div class="form-group row">
+							<div class="col-lg-2">
+								<label  class="custom-select-label" for="name">Name<span style="color:red">*</span></label>
+							</div>
+							<div class="col-lg-4">
+								<input type="text"  [ngClass]="{'error':joinfree.get('name').invalid && joinfree.get('name').touched}"  formControlName="name" class="form-control my-select" />
+	
+								<validation-messages [control]="joinfree.controls.name"></validation-messages>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-lg-2">
+								<label  class="custom-select-label" for="email">Email<span style="color:red">*</span></label>
+							</div>
+							<div class="col-lg-4">
+								<input type="text"  [ngClass]="{'error':joinfree.get('email').invalid && joinfree.get('email').touched}"  formControlName="email" class="form-control my-select"    />
+			
+								<validation-messages [control]="joinfree.controls.email"></validation-messages>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-lg-2">
+								<label  class="custom-select-label">Country<span style="color:red">*</span></label>
+							</div>
+							<div class="col-lg-4">
+								<select  [ngClass]="{'error':joinfree.get('country').invalid && joinfree.get('country').touched}"  formControlName="country" class="form-control my-select"  (change)="selectChangeCountry($event)">
+									<option value=""   [selected]=true >Select country</option>
+									<option *ngFor="let country of country"  [value]="country.country"  id="countryselector" [attr.data-somedata]="country.id">{{country.country}}</option>
+								</select>
+								<validation-messages [control]="joinfree.controls.country"></validation-messages>
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-lg-2">
+							   <label  class="custom-select-label" for="phone">Phone<span style="color:red">*</span></label>
+							</div>
+							<div class="col-lg-4">
+								<div >
+									<span   class="phonecodecolor"   *ngFor="let phonecode of phonecode">+{{phonecode.phonecode}}</span>
+									<input type="text"  formControlName="mobile_no" name="mobile_no" class="form-control my-select"  [ngClass]="{'error':joinfree.get('mobile_no').invalid && joinfree.get('mobile_no').touched}" />
+								</div>
+								<validation-messages [control]="joinfree.controls.mobile_no"></validation-messages>
+							</div>
+						</div>
+						<div class="form-group row" *ngFor="let phonecode of phonecode">
+							<div class="col-lg-2">
+							    <label  class="custom-select-label" for="service_name">Countrycode</label>
+							</div>
+							<div class="col-lg-4">
+								<input type="text" formControlName="countrycode" name="countrycode"   class="form-control my-select"  [(ngModel)]="phonecode.country_codes"  />
+							</div>
+						</div>
+						<div class="form-group row">
+						  <div class="col-lg-2">
+						  
+						  </div>
+						  <div class="col-lg-4">
+							<div class="rfqformcheckbox">
+							  <input type="checkbox"  formControlName="otpmode" id="email" name="otpmode" value="email" (change)="handleSelected($event)" />
+							  <span class="checklabel" >OTP sent to your email</span>
+						    </div>
+						  </div>
+						</div>
+						<div class="form-group row">
+							<div class="col-lg-2">
+							   
+							</div>
+							<div class="col-lg-4">
+								<p>Please enter the otp sent to your mail in the box below</p>
+								<div>
+									<div>
+                                        <input type="text" formControlName="otp" name="otp"   class="form-control my-select"  />
+									
+										 <span id="timer"></span>
+									</div>
+								    <div>
+								      <button type="button" class="btn my-select rfq-btn" (click)='resend()' [disabled]="isResend">Resend</button>
+							        </div>
+								</div>
+							</div>
+						</div>	  
+						<div class="buttons form-group">
+							<div align="center"> 
+							<input type="checkbox" name="agree" value="1" formControlName="agree" />
+							    <span> 
+								  I Agree to the  <a style="color:#3784d4" data-toggle="modal" data-target="#exampleModal" title="Terms & Conditions">Terms & private Policy</a>	  
+							    </span>
+							    <span  *ngIf="joinfree.get('agree').invalid && joinfree.get('agree').touched">Kindly agree with our terms and conditions</span>
+							</div>
+						</div>
+						<div class="form-group row">
+						  <div class="col-lg-3">
+							  <input type="submit" value="Join Now"  class="btn my-select rfq-btn" (click)="joinnow()" />
+						  </div>
+						  <div class="col-lg-4" >
+							 <input type="submit" value="Join with facebook"  class="btn my-select rfq-btn" (click)="facebook()" />
+						   </div>
+					
+						   <div class="col-lg-3">
+							  <input type="submit" value="Join with google"  class="btn my-select rfq-btn" (click)="google()"/>
+							</div>
+						</div>
+				    </form>
+				</div>
+			</div>
+	
+</div>
+

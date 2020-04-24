@@ -104,54 +104,63 @@
    <div class="card rfq-form">
     <div class="card-header text-center rfq-header"><h6>Post to FAMPOSO SME Your Buying Renting Needs/Request for Quote</h6></div>
     <div class="card-body">
-       <form>
+       <form [formGroup]="RfqFormMain">
           <div class="row">
     <div class="col-12 rfq-radio text-center">
       <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+        <input type="radio"  formControlName="rfqtype" id="customRadioInline1"  value="BUY" class="custom-control-input">
         <label class="custom-control-label" for="customRadioInline1">Buy</label>
       </div>
       <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+        <input type="radio"  formControlName="rfqtype" id="customRadioInline2" value="RENT"  class="custom-control-input">
         <label class="custom-control-label" for="customRadioInline2">Rent</label>
       </div>
       <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="customRadioInline3" name="customRadioInline1" class="custom-control-input">
+        <input type="radio" formControlName="rfqtype" id="customRadioInline3" value="OPS"  class="custom-control-input">
         <label class="custom-control-label" for="customRadioInline3">OpenSale</label>
       </div>
       <div class="custom-control custom-radio custom-control-inline">
-        <input type="radio" id="customRadioInline4" name="customRadioInline1" class="custom-control-input">
+        <input type="radio" formControlName="rfqtype" id="customRadioInline4" value="RFQ"  class="custom-control-input">
         <label class="custom-control-label" for="customRadioInline4">Request</label>
       </div>
     </div>
     <div class="col-md-12 pt-2">        
         <label class="custom-select-label" >Mode</label>
-        <select class="form-control custom-select my-select text-center">
-          <option selected>Select mode</option>
-          <option>Post New</option>
-          <option>Edit RFQ</option>
-          <option>Delete RFQ</option>
+        <select class="form-control custom-select my-select text-center" formControlName="rfqmodetype"  (change)="selectmodeHandler($event)"s>
+          <option value="" [selected]=true>Select mode</option>
+          <option value="post">Post New</option>
+          <option value="edit">Edit RFQ</option>
+          <option value="delete">Delete RFQ</option>
         </select>
+        <validation-messages [control]="RfqFormMain.controls.rfqmodetype"></validation-messages>
    </div>
-   <div class="col-md-6 pt-2">        
+   <div class="col-md-6 pt-2" *ngIf="show_name_email">        
         <label class="custom-select-label" >Name</label>
-        <input class="form-control my-select" placeholder="Enter your name">
+        <input class="form-control my-select" formControlName="customer_name" placeholder="Enter your name">
+        <validation-messages [control]="RfqFormMain.controls.customer_name"></validation-messages>
    </div>
-   <div class="col-md-6 pt-2">        
+   <div class="col-md-6 pt-2" *ngIf="show_name_email">        
         <label class="custom-select-label" >Email</label>
-        <input class="form-control my-select" placeholder="Enter your email">
+        <input class="form-control my-select" formControlName="email"  placeholder="Enter your email">
+        <validation-messages [control]="RfqFormMain.controls.email"></validation-messages>
+   </div>
+   <div class="col-md-12 pt-4" *ngIf="show_referencebox">
+       <label class="custom-select-label" >Reference no</label>
+       <input class="form-control my-select" formControlName="reference_no"  placeholder="Enter your reference no">
+       <validation-messages [control]="RfqFormMain.controls.reference_no"></validation-messages>
    </div>
    <div class="col-md-12 pt-4 captcha">
-    <div class="g-recaptcha" data-sitekey="6Lfj4hATAAAAAPnTx8JPMeTG8ihF13cBF7vIfess"></div>
+       <re-captcha (resolved)="resolved($event)" required siteKey="6LethuEUAAAAAA-6GTP6QohQ-RjY8DpvcY8wcK9O"  formControlName="recaptchaReactive"></re-captcha>
    </div>
    <div class="col-md-12 text-center rfq-term-div">
    <div class="custom-control custom-checkbox custom-control-inline">
-         <input type="checkbox" class="form-control custom-control-input" id="eg">
-         <label class="custom-control-label rfq-checkbox" for="eg"> I Agree to the</label> <a href="#" class="text-primary rfq-term">Terms & private Policy</a>
-   </div>
+         <input type="checkbox" class="form-control custom-control-input"  formControlName="agree" (change)="toggleEditable($event)"  id="eg">
+         <label class="custom-control-label rfq-checkbox" for="eg"> I Agree to the</label> <a href="#" data-toggle="modal" data-target="#policy" class="text-primary rfq-term">Terms & private Policy</a>
+
+    </div>
    </div>
    <div class="col-md-12 pt-4 text-center">
-   <button class="btn my-select rfq-btn" type="submit">Submit</button>
+   <button class="btn my-select rfq-btn" type="submit" (click)="rfqdata()" >Submit</button>
    </div>
   </div>
        </form>
