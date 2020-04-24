@@ -7,9 +7,12 @@
          <div class="search-header">
             <select name="" class="search-category">
                <option selected>All Categories</option>
+               <option  *ngFor="let category of category"  [value]="category.id" [attr.data-somedata]="category.id">{{category.category}}</option>
+
             </select>
             <select name="" class="search-sort">
                <option selected>Sort</option>
+               <option  *ngFor="let subcategory of subcategory"  [value]="subcategory.id" [attr.data-somedata]="subcategory.id">{{category.category}}</option>
             </select>
             <input type="text" name="" class="search-keyword" placeholder="Keyword here...">
                <i class="fa fa-microphone fa-lg voice-img" style="color: #7e8284"></i>
@@ -17,9 +20,11 @@
          </div>
       </div>
       <div class="col-md-4 pt-3 pl-5">
-         <img class="whatsapp-img" src="assets/images/header/whatsapp.png">
+        <a href="https://wa.me/9500559800?text=Hi%0A" target="_blank"> 
+            <img class="whatsapp-img" src="assets/images/header/whatsapp.png">
             <p class="support-p">Support</p>
             <p class="support-no">+91 9480237223</p>
+         </a>
 
          <img class="cart-img" src="assets/images/header/cart.png">
             <p class="cart-p">My Cart</p>
